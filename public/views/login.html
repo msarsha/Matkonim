@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-6 col-md-push-3 container narrow-container">
+        <h2>
+            כניסה למערכת
+        </h2>
+        <br></br>
+        <form ng-submit="login()">
+            <div class="form-group">
+                <label for="userName">שם מתשמש</label>
+                <input type="text" id="userName" class="form-control input-sm" ng-model="user.username">
+            </div>
+            <div class="form-group">
+                <label for="password">סיסמה</label>
+                <input type="password" id="password" class="form-control input-sm" ng-model="user.password">
+            </div>
+            <input class="btn btn-success input-sm" value="התחבר" type="submit"></button>
+        </form>
+        <br>
+        <div class="alert alert-warning" ng-show="showError" role="alert">
+           {{errorMsg}}
+        </div>
+    </div>
+</div>

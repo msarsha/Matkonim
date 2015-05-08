@@ -4,16 +4,16 @@ var passport = require('passport');
 
 
 router.post('/signup', passport.authenticate('signup'), function (req, res) {
-	return res.send('TODO: sign up')
+	return res.status(200).send(req.user != null)
 });
 
 router.post('/login', passport.authenticate('login'), function(req, res){
-	return res.send('TODO: login')
+	return res.status(200).send(req.user != null)
 })
 
 router.post('/signout', function (req, res) {
 	req.logout();
-	return res.send('TODO: redirect after signout')
+	return res.sendStatus(200);
 })
 
 

@@ -5,6 +5,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
+		<script src="scripts/controllers/authCtrl.js"></script>
 		<script src="scripts/app.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/master/dist/cdnjs/3.3.1/css/bootstrap-rtl.min.css">
@@ -17,20 +18,19 @@
                 <a class="navbar-brand" href="/"><b>מתכונים</b></a>
            </div>  
            <ul class="nav navbar-nav">
-            <li><a href="#about">המתכונים שלי</a></li>
-            <li><a href="#about">הוסף מתכון</a></li>
-            <li><a href="#about">התחבר</a></li>
-            <li><a href="#about">אודות</a></li>
+            <li></li>
+            <li><a href="#/matkons" ng-show="isAuthenticated">המתכונים שלי</a></li>
+            <li ng-show="isAuthenticated"><a href="#/addMatkon">הוסף מתכון</a></li>
+            <li ng-hide="isAuthenticated"><a href="#/login">כניסה</a></li>
+            <li ng-hide="isAuthenticated"><a href="#/signup">הרשמה</a></li>
+            <li ng-show="isAuthenticated"><a href="#/signout" ng-click="signout()">יציאה</a></li>
+            <li><a href="#/about">אודות</a></li>
            </ul>
        </div> 
     </nav>
     
     <div class="container">
-        <div></div>
-        <h1>אפליקצית המתכונים בדרך !</h1>
-        
         <div ng-view>
-                
         </div>
     </div>
 </body>
