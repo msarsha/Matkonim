@@ -11,11 +11,8 @@ var authCtrl = function($scope, $rootScope, $http, $location){
             $scope.showError = true;
             
         }).error(function(data, status){
-            console.log(status)
-            if(status == 401){
-                $scope.errorMsg = "שם משתמש או סיסמה לא נכונים"
-                $scope.showError = true;
-            }
+            $scope.errorMsg = "שם משתמש או סיסמה לא נכונים"
+            $scope.showError = true;
         })
     }
     $scope.signup = function(){

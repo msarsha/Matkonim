@@ -15,5 +15,9 @@
             </div>
             <input class="btn btn-success input-sm" value="הרשם" type="submit"></button>
         </form>
+        <br>
+        <div class="alert alert-danger" ng-show="showError" role="alert">
+           {{errorMsg}}
+        </div>
     </div>
 </div>
