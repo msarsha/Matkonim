@@ -1,9 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl">
 <head>
-	<title></title>
+	<title>מתכונים</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
+		<script src="scripts/app.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/master/dist/cdnjs/3.3.1/css/bootstrap-rtl.min.css">
+		<link rel="stylesheet" href="styles/app.css">
 </head>
-<body>
-	<h1>אמא, אפליקציה המתכונים בדרך !</h1>
+<body ng-app="matApp">
+    <nav class="navbar navbar-default">
+       <div class="container-fuild">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"><b>מתכונים</b></a>
+           </div>  
+           <ul class="nav navbar-nav">
+            <li><a href="#about">אודות</a></li>
+           </ul>
+       </div> 
+    </nav>
+    <div class="container">
+	   <h1>אמא, אפליקציה המתכונים בדרך !</h1>
+        <div ng-view>
+            
+        </div>
+    </div>
 </body>
 </html>
