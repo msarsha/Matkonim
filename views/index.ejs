@@ -11,20 +11,26 @@
 		<link rel="stylesheet" href="styles/app.css">
 </head>
 <body ng-app="matApp">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
        <div class="container-fuild">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/"><b>מתכונים</b></a>
            </div>  
            <ul class="nav navbar-nav">
+            <li><a href="#about">המתכונים שלי</a></li>
+            <li><a href="#about">הוסף מתכון</a></li>
+            <li><a href="#about">התחבר</a></li>
             <li><a href="#about">אודות</a></li>
            </ul>
        </div> 
     </nav>
+    
     <div class="container">
-	   <h1>אמא, אפליקציה המתכונים בדרך !</h1>
+        <div></div>
+        <h1>אפליקצית המתכונים בדרך !</h1>
+        
         <div ng-view>
-            
+                
         </div>
     </div>
 </body>
