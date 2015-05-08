@@ -16,13 +16,14 @@ require('./models/matkonModel');
 //initialize routes
 var authApi = require('./routes/auth');
 var matkonimApi = require('./routes/matkonim');
+var indexRoute = require('./routes/index');
 
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
 
-app.set('views', './public/views');
-app.set('view engine', 'jade');
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -33,9 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //routes
-app.get('/', function (req, res) {
-	res.render('index.jade');
-})
+app.use('/', indexRoute);
 app.use('/auth', authApi);
 app.use('/api', matkonimApi);
 
