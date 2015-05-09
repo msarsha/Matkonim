@@ -18,12 +18,13 @@ var matkonimService = function($rootScope, $http){
     }
     
     var getMatkon = function(title, cb){
-        $http.get('/api/mat/' + title)
-            .success(function(response){
-                cb(null, response)
-        }).error(function(err){
-            cb(err, null)
-        })
+        var promise = $http.get('/api/mat/' + title);
+        return promise;
+//            .success(function(response){
+//                cb(null, response)
+//        }).error(function(err){
+//            cb(err, null)
+//        })
     }
     
     return {

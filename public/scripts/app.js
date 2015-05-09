@@ -11,6 +11,10 @@ var matApp = angular.module('matApp', ['ngRoute']).run(
         }
 });
 
+matApp.controller('authCtrl', authCtrl);
+matApp.controller('matkonCtrl', matkonCtrl);
+matApp.controller('matkonDetailsCtrl', matkonDetailsCtrl);
+
 matApp.config(function($routeProvider){
     
     $routeProvider.when('/', {
@@ -36,8 +40,22 @@ matApp.config(function($routeProvider){
         templateUrl: '../views/matkonimView.html',
         controller: 'matkonCtrl'
     })
+    
+    $routeProvider.when('/matkonDetails/:title', {
+        templateUrl: '../views/matkonDetails.html',
+        controller: 'matkonDetailsCtrl',
+        resolve: {
+            matkonResolve: function($route, matkonimService){
+                            var promise = matkonimService.getMatkon($route.current.params.title);
+                            promise.then(function(result, data){
+                                return result.data;
+                    })
+                            
+                            return promise;
+            }
+        }
+    })
 })
 
 
 matApp.factory('matkonimService', matkonimService);
-//matApp.factory('matkonimService', ['$rootScope', '$http', matkonimService]);

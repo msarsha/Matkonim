@@ -34,7 +34,8 @@ module.exports.getAllMatkonsByUserId = function (userId, done) {
 }
 
 module.exports.getMatkonByTitle = function (userId, title, done) {
-	Matkon.find({user_id: userId, title: title}, function (err, matkon) {
+    console.log('sending matkon: ' + title)
+	Matkon.findById(title, function (err, matkon) {
 		return done(err, matkon);
 	})
 }
