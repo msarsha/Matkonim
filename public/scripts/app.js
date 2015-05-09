@@ -12,6 +12,11 @@ var matApp = angular.module('matApp', ['ngRoute']).run(
 });
 
 matApp.config(function($routeProvider){
+    
+    $routeProvider.when('/', {
+        templateUrl: '../views/index.html'
+    });
+    
     $routeProvider.when('/signup', {
         templateUrl: '../views/signup.html',
         controller: 'authCtrl'
@@ -22,7 +27,17 @@ matApp.config(function($routeProvider){
         controller: 'authCtrl'
     })
     
-//    $routeProvider.otherWise('/')
+    $routeProvider.when('/addMatkon', {
+        templateUrl: '../views/matkonForm.html',
+        controller: 'matkonCtrl'
+    })
+    
+    $routeProvider.when('/matkons', {
+        templateUrl: '../views/matkonimView.html',
+        controller: 'matkonCtrl'
+    })
 })
 
-matApp.controller('authCtrl', authCtrl);
+
+matApp.factory('matkonimService', matkonimService);
+//matApp.factory('matkonimService', ['$rootScope', '$http', matkonimService]);

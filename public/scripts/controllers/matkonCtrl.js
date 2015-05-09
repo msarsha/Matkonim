@@ -1,0 +1,41 @@
+var matkonCtrl = ['$scope', '$rootScope', 'matkonimService', function($scope, $rootScope, matkonimService){
+    $scope.matkon = {
+        title: "",
+        ingredients: [{title: "", quantity: 0, measureUnit: "גרם"}]
+    };
+
+    $scope.measureUnits = ["גרם", "כפות", "מיליליטר", "כפיות", "כוסות"]
+    $scope.matkonim = {};
+    
+    $scope.addMatkon = function(){
+        matkonimService.add($scope.matkon, function(err, result){
+            if(err){
+                alert('cannot add matkon');
+            }else{
+                alert('matkon added');
+                console.log(result);
+            }
+            
+        })
+    }
+    
+    $scope.getAll = function(){
+        matkonimService.getAll(function(err, result){
+            
+            console.log(result);
+            if(err){
+                alert(err)
+            }else{
+                $scope.matkonim = result;
+            }
+        })
+    }
+    
+    $scope.addIng = function(){
+        $scope.matkon.ingredients.push({title: "", quantity: 0, measureUnit: "גרם"});
+    }
+    
+    $scope.removeIng = function(index){
+        $scope.matkon.ingredients.splice(index, 1);
+    }
+}]

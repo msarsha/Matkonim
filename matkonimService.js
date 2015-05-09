@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
 	Matkon = mongoose.model('Matkon')
 
 module.exports.addMatkon = function (userId, matkonToAdd, done) {
-
+    console.log(matkonToAdd);
 	Matkon.findOne({title: matkonToAdd.title, user_id: userId}, function (err, matkon) {
 		if (err) {
 			return done(err, null);
@@ -18,6 +18,8 @@ module.exports.addMatkon = function (userId, matkonToAdd, done) {
 		newMatkon.user_id = userId;
 		newMatkon.title = matkonToAdd.title;
 		newMatkon.ingredients = matkonToAdd.ingredients;
+        newMatkon.measureUnit = matkonToAdd.measureUnit;
+        newMatkon.proccess = matkonToAdd.proccess;
 
 		newMatkon.save(function (err, dbMatkon) {
 			return done(err, dbMatkon);

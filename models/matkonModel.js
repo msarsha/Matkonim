@@ -4,8 +4,9 @@ var Schema = mongoose.Schema;
 var matkonSchema = new Schema({
 	user_id: String,
 	title: String,
-	ingredients: [{title: String, quantity: Number}],
-	created_at: {type: Date, default: Date.now}
+	ingredients: [{title: String, quantity: Number, measureUnit: String}],
+	created_at: {type: Date, default: Date.now},
+    proccess: String
 });
 
 var Matkon = mongoose.model('Matkon', matkonSchema); 
