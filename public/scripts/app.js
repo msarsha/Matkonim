@@ -1,12 +1,21 @@
-var matApp = angular.module('matApp', ['ngRoute']).run(
-    function($rootScope, $http){
-        $rootScope.isAuthenticated = false;
-        $rootScope.isAuthenticated = false;
+var matApp = angular.module('matApp', ['ngRoute', 'ngCookies']).run(
+    function($rootScope, $http, $cookieStore){
+        console.log($cookieStore.get('matAppAuth'))
+        if(!$cookieStore.get('matAppAuth')){
+            $rootScope.isAuthenticated = false;
+            $rootScope.currentUser = '';
+        }
+        else{
+            $rootScope.isAuthenticated = true;
+            $rootScope.currentUser = $cookieStore.get('currentUser');
+        }
+
         
         $rootScope.signout = function(){
             $http.get('auth/signout');
             $rootScope.isAuthenticated = false;
             $rootScope.currentUser = '';
+            $cookieStore.remove('matAppAuth');
             $location.url('/');
         }
 });

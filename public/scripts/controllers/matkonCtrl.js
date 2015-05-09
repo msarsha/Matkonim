@@ -13,7 +13,6 @@ var matkonCtrl = ['$scope', '$rootScope', 'matkonimService', function($scope, $r
                 alert('cannot add matkon');
             }else{
                 alert('matkon added');
-                console.log(result);
             }
             
         })
@@ -21,8 +20,6 @@ var matkonCtrl = ['$scope', '$rootScope', 'matkonimService', function($scope, $r
     
     $scope.getAll = function(){
         matkonimService.getAll(function(err, result){
-            
-            console.log(result);
             if(err){
                 alert(err)
             }else{
