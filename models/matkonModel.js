@@ -6,7 +6,8 @@ var matkonSchema = new Schema({
 	title: String,
 	ingredients: [{title: String, quantity: Number, measureUnit: String}],
 	created_at: {type: Date, default: Date.now},
-    proccess: String
+    proccess: String,
+    files: [{path: String, base64Prefix: String}]
 });
 
 var Matkon = mongoose.model('Matkon', matkonSchema); 

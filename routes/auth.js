@@ -11,7 +11,7 @@ router.post('/login', passport.authenticate('login'), function(req, res){
 	return res.status(200).send(req.user != null)
 })
 
-router.post('/signout', function (req, res) {
+router.get('/signout', function (req, res) {
 	req.logout();
 	return res.sendStatus(200);
 })

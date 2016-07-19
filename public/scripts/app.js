@@ -1,6 +1,5 @@
 var matApp = angular.module('matApp', ['ngRoute', 'ngCookies']).run(
     function($rootScope, $http, $cookieStore){
-        console.log($cookieStore.get('matAppAuth'))
         if(!$cookieStore.get('matAppAuth')){
             $rootScope.isAuthenticated = false;
             $rootScope.currentUser = '';
@@ -55,12 +54,13 @@ matApp.config(function($routeProvider){
         controller: 'matkonDetailsCtrl',
         resolve: {
             matkonResolve: function($route, matkonimService){
-                            var promise = matkonimService.getMatkon($route.current.params.title);
-                            promise.then(function(result, data){
-                                return result.data;
-                    })
+                                var promise = matkonimService.getMatkon($route.current.params.title);
+                                promise.then(function(result, data){
+                                    console.log(result.data)
+                                    return result.data;
+                                })
                             
-                            return promise;
+                                return promise;
             }
         }
     })
@@ -68,3 +68,36 @@ matApp.config(function($routeProvider){
 
 
 matApp.factory('matkonimService', matkonimService);
+
+matApp.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
+
+matApp.directive("fileread", [function () {
+    return {
+        scope: {
+            fileread: "="
+        },
+        link: function (scope, element, attributes) {
+            element.bind("change", function (changeEvent) {
+                var reader = new FileReader();
+                reader.onload = function (loadEvent) {
+                    scope.$apply(function () {
+                        scope.fileread = loadEvent.target.result;
+                    });
+                }
+                reader.readAsDataURL(changeEvent.target.files[0]);
+            });
+        }
+    }
+}]);

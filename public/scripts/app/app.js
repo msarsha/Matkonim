@@ -1,1 +1,0 @@
-var matkonimApp = angular.module('matkonimApp', []);

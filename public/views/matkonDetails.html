@@ -4,7 +4,7 @@
             <label for="mtitle">
                 שם
             </label>
-            <span>{{matkon.title}}</span>
+            <span>{{matkon.matkon.title}}</span>
         </div>
     </div>
     <div class="row">
@@ -21,7 +21,7 @@
                     <label for="ingMeasureUnit">מידה</label>
                 </div>
             </div>    
-            <div ng-repeat="ing in matkon.ingredients">
+            <div ng-repeat="ing in matkon.matkon.ingredients">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-2">
@@ -38,7 +38,10 @@
             </div>
             <br>
             <label>אופן הכנה</label>
-            <pre>{{matkon.proccess}}</pre>
+            <pre>{{matkon.matkon.proccess}}</pre>
+            <div>
+                <img ng-src="{{matkon.file}}"></img>
+            </div>
         </div>
     </div>
 </div>

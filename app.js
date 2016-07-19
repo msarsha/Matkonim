@@ -1,3 +1,5 @@
+/// <reference path="typings/node/node.d.ts"/>
+
 var express = require('express'),
 	session = require('express-session'),
 	mongoose = require('mongoose'),

@@ -1,5 +1,9 @@
 var matkonimService = function($rootScope, $http){
     var addmatkon = function(matkon, cb){
+
+//        var fd = createFormData(matkon);
+//        console.log('file in server:' + matkon.file)
+        
         $http.post('/api/mat', matkon)
             .success(function(response, status){
                 cb(null, response);
@@ -17,14 +21,24 @@ var matkonimService = function($rootScope, $http){
         })
     }
     
-    var getMatkon = function(title, cb){
+    var getMatkonsWithFilter = function(filter, cb){
+        $http.get('/api/mat/filter', filter)
+            .success(function(response){
+                
+        })
+    }
+    
+    var getMatkon = function(title){
         var promise = $http.get('/api/mat/' + title);
         return promise;
-//            .success(function(response){
-//                cb(null, response)
-//        }).error(function(err){
-//            cb(err, null)
-//        })
+    }
+    
+    function createFormData(data){
+        var fd = new FormData();
+        angular.forEach(data, function(value, key) {
+            fd.append(key, value);
+        });
+        return fd;
     }
     
     return {
