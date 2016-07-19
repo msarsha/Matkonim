@@ -9,7 +9,7 @@ var express = require('express'),
 
 
 //connect to DB
-mongoose.connect("mongodb://mapp:mapp123@ds063779.mongolab.com:63779/matkonimdb");
+mongoose.connect("mongoUrlHere");
 
 //initialize db models
 require('./models/userModel');
